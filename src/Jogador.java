@@ -22,6 +22,7 @@ public class Jogador {
         this.jogo_de_cabeca=0;
         this.remate=0;
         this.capacidade_de_passe = 0;
+        
 
     }
 

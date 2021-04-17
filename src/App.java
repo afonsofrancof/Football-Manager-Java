@@ -3,8 +3,7 @@ import java.util.ArrayList;
 
 public class App {
     public static void main(String[] args){
-        ArrayList<Jogador> t=new ArrayList<>();
-        ArrayList<Jogador> s=new ArrayList<>();
+        
         Jogador j1= new Jogador("Nuno Pacheco",9f,9f,9f,9f,9f,9f,9f);
         Jogador j2= new Jogador("Pipi",1f,1f,1f,1f,1f,1f,1f);
         Jogador j3= new Jogador("Gambi",5f,5f,5f,5f,5f,5f,5f);
