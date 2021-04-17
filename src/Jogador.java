@@ -130,13 +130,14 @@ public class Jogador {
 
     
     public String toString(){
-        return getNome() + ":" 
+        String str = getNome() + ":" 
         + "\nVelocidade ->" +getVelocidade() 
         + "\nDestreza ->" +getDestreza() 
-        + "\nImpulsão ->" + getImpulsao() 
-        + "\nJogo de cabeça ->" + getJogo_de_cabeca() 
+        + "\nImpulsao ->" + getImpulsao() 
+        + "\nJogo de cabeca ->" + getJogo_de_cabeca() 
         + "\nRemate ->" + getRemate() 
         + "\nCapacidade de passe ->" +getCapacidade_de_passe()+'\n';
+        return str;
     }
 
 
@@ -170,6 +171,19 @@ class Defesa extends Jogador{
         super(d);
     }
 
+
+    public String toString(){
+        String str = getNome() + ":" 
+        + "\nVelocidade ->" +getVelocidade() 
+        + "\nDestreza ->" +getDestreza() 
+        + "\nImpulsao ->" + getImpulsao() 
+        + "\nJogo de cabeca ->" + getJogo_de_cabeca() 
+        + "\nRemate ->" + getRemate() 
+        + "\nCapacidade de passe ->" +getCapacidade_de_passe()+'\n';
+        return str;
+    }
+
+
 }
 
 
@@ -192,6 +206,18 @@ class Lateral extends Jogador{
     public Lateral(Lateral l){
         super(l);
     }
+
+    public String toString(){
+        String str = getNome() + ":" 
+        + "\nVelocidade ->" +getVelocidade() 
+        + "\nDestreza ->" +getDestreza() 
+        + "\nImpulsao ->" + getImpulsao() 
+        + "\nJogo de cabeca ->" + getJogo_de_cabeca() 
+        + "\nRemate ->" + getRemate() 
+        + "\nCapacidade de passe ->" +getCapacidade_de_passe()+'\n';
+        return str;
+    }
+
 
 
 }
@@ -216,6 +242,18 @@ class Avancado extends Jogador{
     public Avancado(Avancado a){
         super(a);
     }
+
+    public String toString(){
+        String str = getNome() + ":" 
+        + "\nVelocidade ->" +getVelocidade() 
+        + "\nDestreza ->" +getDestreza() 
+        + "\nImpulsao ->" + getImpulsao() 
+        + "\nJogo de cabeca ->" + getJogo_de_cabeca() 
+        + "\nRemate ->" + getRemate() 
+        + "\nCapacidade de passe ->" +getCapacidade_de_passe()+'\n';
+        return str;
+    }
+
 
 
 }
@@ -244,6 +282,18 @@ class Medio extends Jogador{
     public Medio(Medio m){
         super(m);
     }
+
+    public String toString(){
+        String str = getNome() + ":" 
+        + "\nVelocidade ->" +getVelocidade() 
+        + "\nDestreza ->" +getDestreza() 
+        + "\nImpulsao ->" + getImpulsao() 
+        + "\nJogo de cabeca ->" + getJogo_de_cabeca() 
+        + "\nRemate ->" + getRemate() 
+        + "\nCapacidade de passe ->" +getCapacidade_de_passe()+'\n';
+        return str;
+    }
+
 
 
 }
@@ -283,6 +333,20 @@ class Guarda_Redes extends Jogador{
     public void setElasticidade(float elasticidade) {
         this.elasticidade = elasticidade;
     }
+
+
+    public String toString(){
+        String str = getNome() + ":" 
+        + "\nVelocidade ->" +getVelocidade() 
+        + "\nDestreza ->" +getDestreza() 
+        + "\nImpulsao ->" + getImpulsao() 
+        + "\nJogo de cabeca ->" + getJogo_de_cabeca() 
+        + "\nRemate ->" + getRemate() 
+        + "\nCapacidade de passe ->" +getCapacidade_de_passe()
+        + "\nElasticidade ->" +getElasticidade()+'\n';
+        return str;
+    }
+
 
 }
 
