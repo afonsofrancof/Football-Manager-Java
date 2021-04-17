@@ -12,6 +12,12 @@ public class Equipa {
         this.jogadores_suplentes = new ArrayList<Jogador>();
     }
 
+    public Equipa(String nome){
+        this.nome=nome;
+        this.jogadores_titulares = new ArrayList<Jogador>();
+        this.jogadores_suplentes = new ArrayList<Jogador>();
+    }
+
     public Equipa(String nome,ArrayList<Jogador> jogadores_titulares,ArrayList<Jogador> jogadores_suplentes){
 
         this.nome=nome;
@@ -63,7 +69,7 @@ public class Equipa {
 
         this.jogadores_suplentes = new ArrayList<>();
         for(Jogador j:lista){
-            this.jogadores_suplentes.add(j);//preciso dar clone
+            this.jogadores_suplentes.add(j);//preciso dar clone??
         }
 
 
@@ -73,6 +79,12 @@ public class Equipa {
         this.getJogadores_suplentes().add(j);//adicionei o get em vez de apenas jogadores
     }
 
+    public void remove_jogador(Jogador j){
+        
+        if(this.getJogadores_suplentes().contains(j)) this.getJogadores_suplentes().remove(j);
+        if(this.getJogadores_titulares().contains(j)) this.getJogadores_titulares().remove(j);  
+
+    }
 
 
 

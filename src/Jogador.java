@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Jogador {
     
+    public String nome;
     public float velocidade;
     public float resistencia;
     public float destreza;
@@ -13,6 +14,7 @@ public class Jogador {
 
     public Jogador(){
 
+        this.nome="";
         this.velocidade=0;
         this.resistencia=0;
         this.destreza=0;
@@ -23,8 +25,9 @@ public class Jogador {
 
     }
 
-    public Jogador(float velocidade,float resistencia,float destreza,float impulsao,float jogo_de_cabeca,float remate,float capacidade_de_passe){
+    public Jogador(String nome,float velocidade,float resistencia,float destreza,float impulsao,float jogo_de_cabeca,float remate,float capacidade_de_passe){
 
+        this.nome=nome;
         this.velocidade=velocidade;
         this.resistencia=resistencia;
         this.destreza=destreza;
@@ -37,6 +40,7 @@ public class Jogador {
 
     public Jogador(Jogador j){
         
+        this.nome=j.getNome();
         this.velocidade = j.getVelocidade();
         this.resistencia=j.getResistencia();
         this.destreza=j.getDestreza();
@@ -86,7 +90,7 @@ public class Jogador {
 
 
     public float getImpulsao() {
-        return impulsao;
+        return this.impulsao;
     }
 
 
@@ -96,7 +100,7 @@ public class Jogador {
 
 
     public float getJogo_de_cabeca() {
-        return jogo_de_cabeca;
+        return this.jogo_de_cabeca;
     }
 
 
@@ -106,7 +110,7 @@ public class Jogador {
 
 
     public float getRemate() {
-        return remate;
+        return this.remate;
     }
 
 
@@ -116,7 +120,7 @@ public class Jogador {
 
 
     public float getCapacidade_de_passe() {
-        return capacidade_de_passe;
+        return this.capacidade_de_passe;
     }
 
     public void setCapacidade_de_passe(float capacidade_de_passe) {
@@ -124,10 +128,30 @@ public class Jogador {
     }
 
     
+    public String toString(){
+        return getNome() + ":" 
+        + "\nVelocidade ->" +getVelocidade() 
+        + "\nDestreza ->" +getDestreza() 
+        + "\nImpulsão ->" + getImpulsao() 
+        + "\nJogo de cabeça ->" + getJogo_de_cabeca() 
+        + "\nRemate ->" + getRemate() 
+        + "\nCapacidade de passe ->" +getCapacidade_de_passe()+'\n';
+    }
 
+
+    public String getNome(){
+
+        return this.nome;
+    }
 
 
 }
+
+
+
+//_______________________________________________________________________________________________________________________________________________________
+
+
 
 class Defesa extends Jogador{
 
@@ -135,9 +159,9 @@ class Defesa extends Jogador{
         super();
     } 
 
-    public Defesa(float velocidade,float resistencia,float destreza,float impulsao,float jogo_de_cabeca,float remate,float capacidade_de_passe){
+    public Defesa(String nome,float velocidade,float resistencia,float destreza,float impulsao,float jogo_de_cabeca,float remate,float capacidade_de_passe){
 
-        super(velocidade,resistencia,destreza,impulsao,jogo_de_cabeca,remate,capacidade_de_passe);
+        super(nome,velocidade,resistencia,destreza,impulsao,jogo_de_cabeca,remate,capacidade_de_passe);
 
     }
 
@@ -147,15 +171,20 @@ class Defesa extends Jogador{
 
 }
 
+
+//_______________________________________________________________________________________________________________________________________________________
+
+
+
 class Lateral extends Jogador{
 
     public Lateral(){
         super();
     } 
 
-    public Lateral(float velocidade,float resistencia,float destreza,float impulsao,float jogo_de_cabeca,float remate,float capacidade_de_passe){
+    public Lateral(String nome,float velocidade,float resistencia,float destreza,float impulsao,float jogo_de_cabeca,float remate,float capacidade_de_passe){
 
-        super(velocidade,resistencia,destreza,impulsao,jogo_de_cabeca,remate,capacidade_de_passe);
+        super(nome,velocidade,resistencia,destreza,impulsao,jogo_de_cabeca,remate,capacidade_de_passe);
 
     }
 
@@ -166,15 +195,20 @@ class Lateral extends Jogador{
 
 }
 
+
+//_______________________________________________________________________________________________________________________________________________________
+
+
+
 class Avancado extends Jogador{
 
     public Avancado(){
         super();
     } 
 
-    public Avancado(float velocidade,float resistencia,float destreza,float impulsao,float jogo_de_cabeca,float remate,float capacidade_de_passe){
+    public Avancado(String nome,float velocidade,float resistencia,float destreza,float impulsao,float jogo_de_cabeca,float remate,float capacidade_de_passe){
 
-        super(velocidade,resistencia,destreza,impulsao,jogo_de_cabeca,remate,capacidade_de_passe);
+        super(nome,velocidade,resistencia,destreza,impulsao,jogo_de_cabeca,remate,capacidade_de_passe);
 
     }
 
@@ -185,15 +219,24 @@ class Avancado extends Jogador{
 
 }
 
+
+
+
+//_______________________________________________________________________________________________________________________________________________________
+
+
+
+
+
 class Medio extends Jogador{
 
     public Medio(){
         super();
     } 
 
-    public Medio(float velocidade,float resistencia,float destreza,float impulsao,float jogo_de_cabeca,float remate,float capacidade_de_passe){
+    public Medio(String nome,float velocidade,float resistencia,float destreza,float impulsao,float jogo_de_cabeca,float remate,float capacidade_de_passe){
 
-        super(velocidade,resistencia,destreza,impulsao,jogo_de_cabeca,remate,capacidade_de_passe);
+        super(nome,velocidade,resistencia,destreza,impulsao,jogo_de_cabeca,remate,capacidade_de_passe);
 
     }
 
@@ -204,6 +247,12 @@ class Medio extends Jogador{
 
 }
 
+
+
+//_______________________________________________________________________________________________________________________________________________________
+
+
+
 class Guarda_Redes extends Jogador{
 
     private float elasticidade;
@@ -213,9 +262,9 @@ class Guarda_Redes extends Jogador{
         this.elasticidade=0;
     } 
 
-    public Guarda_Redes(float velocidade,float resistencia,float destreza,float impulsao,float jogo_de_cabeca,float remate,float capacidade_de_passe,float elasticidade){
+    public Guarda_Redes(String nome,float velocidade,float resistencia,float destreza,float impulsao,float jogo_de_cabeca,float remate,float capacidade_de_passe,float elasticidade){
 
-        super(velocidade,resistencia,destreza,impulsao,jogo_de_cabeca,remate,capacidade_de_passe);
+        super(nome,velocidade,resistencia,destreza,impulsao,jogo_de_cabeca,remate,capacidade_de_passe);
         this.elasticidade=elasticidade;
 
     }
@@ -227,7 +276,7 @@ class Guarda_Redes extends Jogador{
 
 
     public float getElasticidade() {
-        return elasticidade;
+        return this.elasticidade;
     }
 
     public void setElasticidade(float elasticidade) {

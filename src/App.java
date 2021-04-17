@@ -2,27 +2,33 @@ import java.util.ArrayList;
 
 
 public class App {
-    public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+    public static void main(String[] args){
         ArrayList<Jogador> t=new ArrayList<>();
         ArrayList<Jogador> s=new ArrayList<>();
-        Jogador j= new Jogador(1f,2f,3f,4f,5f,6f,7f);
-        t.add(j);
-        Equipa e= new Equipa("Bomdia\n",t,s);
-        e.adiciona_jogador(j);
-        e.jogadores_suplentes.add(j);
-        System.out.println(s.size());
-        //System.out.println(t.toString());
-        //System.out.println(t.get(0).velocidade);
-        //System.out.println(t.get(0).resistencia);
-        //System.out.println(t.get(0).destreza);
-        //System.out.println(t.get(0).impulsao);
-        //System.out.println(t.get(0).jogo_de_cabeca);
-        //System.out.println(t.get(0).remate);
-        //System.out.println(t.get(0).capacidade_de_passe);
-//
-        System.out.println(t.size());
+        Jogador j1= new Jogador("Nuno Pacheco",9f,9f,9f,9f,9f,9f,9f);
+        Jogador j2= new Jogador("Pipi",1f,1f,1f,1f,1f,1f,1f);
+        Jogador j3= new Jogador("Gambi",5f,5f,5f,5f,5f,5f,5f);
+        Jogador j4= new Jogador("Gatinho Gordo",2f,2f,2f,2f,2f,2f,2f);
+        Jogador j5= new Jogador("Garanito",10f,10f,5f,1f,1f,10f,1f);
+        //t.add(j);
+        Equipa e= new Equipa("FC Cabouco");
 
+        e.adiciona_jogador(j1);
+        e.adiciona_jogador(j2);
+        e.adiciona_jogador(j3);
+        e.adiciona_jogador(j4);
+        e.adiciona_jogador(j5);
+
+        System.out.println(e.getJogadores_suplentes());
+
+        e.remove_jogador(j1);
+        e.remove_jogador(j2);
+        e.remove_jogador(j3);
+        e.remove_jogador(j4);
+        e.remove_jogador(j5);
+        
+        
+        System.out.println(e.getJogadores_suplentes());
 
     }
 
