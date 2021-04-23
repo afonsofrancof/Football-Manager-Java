@@ -82,18 +82,19 @@ public class Equipa {
     public void remove_jogador(Jogador j){
         
         if(this.getJogadores_suplentes().contains(j)) this.getJogadores_suplentes().remove(j);
-        if(this.getJogadores_titulares().contains(j)) this.getJogadores_titulares().remove(j);  
+        if(this.getJogadores_titulares().contains(j)) this.getJogadores_titulares().remove(j);
+        //aqui alteras o historial
 
     }
 
 
+    public void mudaParaEquipa(Equipa e,Jogador j){
 
-    /*public void setEncomendas(ArrayList<LinhaEncomenda> encomendas) {
-        this.encomendas = new ArrayList<>();
-        for(LinhaEncomenda l : encomendas) {
-            this.encomendas.add(l.clone());
-        }
-    }*/
+        this.remove_jogador(j);
+        e.adiciona_jogador(j);
+        //Falta confirmar se o jogador existe na dada equipa
+
+    }
 
 
 }

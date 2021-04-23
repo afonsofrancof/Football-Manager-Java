@@ -10,7 +10,6 @@ public class Jogador {
     public float jogo_de_cabeca;
     public float remate;
     public float capacidade_de_passe;
-    public ArrayList<String> equipas_anteriores;
 
     public Jogador(){
 
