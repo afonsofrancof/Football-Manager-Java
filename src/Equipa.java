@@ -124,6 +124,14 @@ public class Equipa {
         return this.jogadores_suplentes.values().stream().mapToDouble(Jogador::calculaCapacidade).sum();
     }
 
+    public void promoveJogadores(Equipa e){
+
+
+
+    }
+
+
+
     public int contra(Equipa e) {
 
         int prob1, prob2, random;
