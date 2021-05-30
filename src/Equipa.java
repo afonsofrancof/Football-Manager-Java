@@ -1,3 +1,5 @@
+import Jogador.Jogador;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -6,8 +8,8 @@ import java.util.stream.Collectors;
 public class Equipa {
 
     public String nome;
-    //public ArrayList<Jogador> jogadores_titulares;
-    //public ArrayList<Jogador> jogadores_suplentes;
+    //public ArrayList<Jogador.Jogador> jogadores_titulares;
+    //public ArrayList<Jogador.Jogador> jogadores_suplentes;
     public Map<String, Jogador> jogadores_titulares;
     public Map<String, Jogador> jogadores_suplentes;
 
@@ -126,8 +128,8 @@ public class Equipa {
 
         int prob1, prob2, random;
         int result;
-        double stats1 = this.calculaStats();//jogadores_suplentes.values().stream().mapToDouble(Jogador::calculaCapacidade).sum();
-        double stats2 = e.calculaStats();//jogadores_suplentes.values().stream().mapToDouble(Jogador::calculaCapacidade).sum();
+        double stats1 = this.calculaStats();//jogadores_suplentes.values().stream().mapToDouble(Jogador.Jogador::calculaCapacidade).sum();
+        double stats2 = e.calculaStats();//jogadores_suplentes.values().stream().mapToDouble(Jogador.Jogador::calculaCapacidade).sum();
         random = (int) (Math.random() * 100);//pode ser alterado para double
         //double bomdia1 = (stats1/(stats1+stats2))*100;
         //double bomdia2 = (stats2/(stats1+stats2))*100;
