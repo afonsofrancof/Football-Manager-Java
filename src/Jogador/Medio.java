@@ -39,7 +39,8 @@ public class Medio extends Jogador {
                 + "\nRemate ->" + getRemate()
                 + "\nCapacidade de passe ->" + getCapacidade_de_passe()
                 + "\n Historico de clubes ->" + getHistorico_eq()
-                + "\nCapacidade de Jogador.Medio ->" + getCap_medio() + '\n';
+                + "\nCapacidade de Jogador.Medio ->" + getCap_medio() + '\n'
+                + "\nCansaco ->" + getCansaco() + "\n";
         return str;
     }
 
@@ -47,7 +48,7 @@ public class Medio extends Jogador {
 
         return (this.getResistencia() + this.getVelocidade()) * 0.8
                 + (this.getImpulsao() + this.getRemate() + this.getJogo_de_cabeca()) * 0.6
-                + this.getDestreza() + this.getCapacidade_de_passe();
+                + this.getDestreza() + this.getCapacidade_de_passe() - 0.1*getCansaco();
 
     }
 

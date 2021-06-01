@@ -1,15 +1,13 @@
-import Jogador.Jogador;
+import Jogador.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.awt.*;
+import java.util.*;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Equipa {
 
     public String nome;
-    //public ArrayList<Jogador.Jogador> jogadores_titulares;
-    //public ArrayList<Jogador.Jogador> jogadores_suplentes;
     public Map<String, Jogador> jogadores_titulares;
     public Map<String, Jogador> jogadores_suplentes;
 
@@ -81,7 +79,7 @@ public class Equipa {
     public void adiciona_jogador(Jogador j) {
 
         if ((this.jogadores_suplentes.putIfAbsent(j.getNome(), j)) != null) {
-            System.out.println("jogador já existe\n");//falta criar exeption
+            System.out.println("jogador já existe\n");//falta criar exception
         }
 
     }
@@ -93,7 +91,7 @@ public class Equipa {
         if (j == null) {
             j = this.jogadores_titulares.remove(nome);
             if (j == null) {
-                System.out.println("jogador não existe\n");//falta criar exeption
+                System.out.println("jogador não existe\n");//falta criar exception
                 return null;
             }
             return null;
@@ -115,18 +113,110 @@ public class Equipa {
 
             j = this.remove_jogador(nome);
             if (j == null) {
-                System.out.println("jogador não existe\n");//falta criar exeption
+                System.out.println("jogador não existe\n");//falta criar exception
             } else e.adiciona_jogador(j);
         }
     }
 
     public double calculaStats() {
-        return this.jogadores_suplentes.values().stream().mapToDouble(Jogador::calculaCapacidade).sum();
+        return this.jogadores_titulares.values().stream().mapToDouble(Jogador::calculaCapacidade).sum();
     }
 
-    public void promoveJogadores(Equipa e){
 
 
+
+
+
+    public void constroiEquipa(int defesa,int meio,int ataque){//assumimos que ele tem jogadores suficientes e adequados para jogar
+
+        if(ataque+meio+defesa!=10) return;//exception aqui
+        Guarda_Redes g = this.jogadores_suplentes.values()
+                .stream()
+                .map(Jogador::clone)
+                .filter(e->e instanceof Guarda_Redes)
+                .map(Guarda_Redes.class::cast)
+                .max(new Jogador.comparaJogadores())
+                .orElse(null);
+        this.jogadores_suplentes.remove(g.getNome());
+        this.jogadores_titulares.put(g.getNome(),g);
+
+
+        List<Avancado> a = this.jogadores_suplentes.values()
+                .stream()
+                .map(Jogador::clone)
+                .filter(e->e instanceof Avancado)
+                .map(Avancado.class::cast)
+                .sorted(new Jogador.comparaJogadores())
+                .collect(Collectors.toList());
+
+
+        List<Lateral> l = this.jogadores_suplentes.values()
+                .stream()
+                .map(Jogador::clone)
+                .filter(e->e instanceof Lateral)
+                .map(Lateral.class::cast)
+                .sorted(new Jogador.comparaJogadores())
+                .collect(Collectors.toList());
+
+        List<Defesa> d = this.jogadores_suplentes.values()
+                .stream()
+                .map(Jogador::clone)
+                .filter(e->e instanceof Defesa)
+                .map(Defesa.class::cast)
+                .sorted(new Jogador.comparaJogadores())
+                .collect(Collectors.toList());
+
+        List<Medio> m = this.jogadores_suplentes.values()
+                .stream()
+                .map(Jogador::clone)
+                .filter(e->e instanceof Medio)
+                .map(Medio.class::cast)
+                .sorted(new Jogador.comparaJogadores())
+                .collect(Collectors.toList());
+
+
+        if(ataque==3){//4-3-3 (4 defesas,3 médios, 1 avançado , 2 laterais)
+            Avancado av = a.remove(a.size()-1);
+            this.jogadores_titulares.put(av.getNome(),av);
+            this.jogadores_suplentes.remove(av.getNome());
+            for(int i=0;i<3;i++){
+                Medio med = m.remove(m.size()-1);
+                this.jogadores_suplentes.remove(med.getNome());
+                this.jogadores_titulares.put(med.getNome(),med);
+            }
+
+        }
+        else{//4-4-2 (4 defesas,2 médios, 2 laterais, 2 avançados)
+            for(int i=0;i<2;i++){
+                Avancado av = a.remove(a.size()-1);
+                this.jogadores_suplentes.remove(av.getNome());
+                this.jogadores_titulares.put(av.getNome(),av);
+            }
+            for(int i=0;i<2;i++){
+                Medio med = m.remove(m.size()-1);
+                this.jogadores_suplentes.remove(med.getNome());
+                this.jogadores_titulares.put(med.getNome(),med);
+            }
+        }
+
+        for(int i=0;i<2;i++){
+            Lateral lat = l.remove(l.size()-1);
+            this.jogadores_suplentes.remove(lat.getNome());
+            this.jogadores_titulares.put(lat.getNome(),lat);
+        }
+
+        for(int i=0;i<4;i++){
+            Defesa def = d.remove(d.size()-1);
+            this.jogadores_suplentes.remove(def.getNome());
+            this.jogadores_titulares.put(def.getNome(),def);
+        }
+
+    }
+
+    public void desconstroiEquipa(){
+
+       this.jogadores_suplentes.putAll(this.jogadores_titulares.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey,e -> e.getValue().clone())));
+       this.jogadores_titulares.clear();
 
     }
 
@@ -134,21 +224,18 @@ public class Equipa {
 
     public int contra(Equipa e) {
 
+        this.constroiEquipa(4, 3, 3);
+        e.constroiEquipa(4, 3, 3);
         int prob1, prob2, random;
         int result;
-        double stats1 = this.calculaStats();//jogadores_suplentes.values().stream().mapToDouble(Jogador.Jogador::calculaCapacidade).sum();
-        double stats2 = e.calculaStats();//jogadores_suplentes.values().stream().mapToDouble(Jogador.Jogador::calculaCapacidade).sum();
-        random = (int) (Math.random() * 100);//pode ser alterado para double
-        //double bomdia1 = (stats1/(stats1+stats2))*100;
-        //double bomdia2 = (stats2/(stats1+stats2))*100;
-        //System.out.print(random + " | ");
-        //System.out.print(bomdia1+ " | " + bomdia2 + " | ");
-        prob1 = (int) Math.round(((stats1 / (stats1 + stats2)) * 100));//pode ser alterado para double
-        prob2 = (int) Math.round(((stats2 / (stats1 + stats2)) * 100));//pode ser alterado para double
+        double stats1 = this.calculaStats();
+        double stats2 = e.calculaStats();
+        random = (int) (Math.random() * 100);
+        prob1 = (int) Math.round(((stats1 / (stats1 + stats2)) * 100));
+        prob2 = (int) Math.round(((stats2 / (stats1 + stats2)) * 100));
         System.out.print(random + " | ");
         System.out.print(prob1 + " | " + prob2 + " | ");
         if (prob1 > prob2) {
-            //System.out.print("  Entrou 1"+ stats1 + stats2 + "|");
             if (random < prob1) {
                 result = 1;
             } else if (random > prob1) {
@@ -164,6 +251,9 @@ public class Equipa {
         } else if (random < 70) result = 0;
         else if (random < 85) result = 1;
         else result = 2;
+
+        this.desconstroiEquipa();
+        e.desconstroiEquipa();
 
         return result;
 

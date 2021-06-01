@@ -42,7 +42,8 @@ public class Guarda_Redes extends Jogador {
                 + "\nRemate ->" + getRemate()
                 + "\nCapacidade de passe ->" + getCapacidade_de_passe()
                 + "\nElasticidade ->" + getElasticidade()
-                + "\n Historico de clubes ->" + getHistorico_eq() + '\n';
+                + "\n Historico de clubes ->" + getHistorico_eq() + '\n'
+                + "\nCansaco ->" + getCansaco() + "\n";
         return str;
     }
 

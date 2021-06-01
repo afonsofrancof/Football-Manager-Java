@@ -1,6 +1,7 @@
 package Jogador;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Defesa extends Jogador {
 
@@ -41,7 +42,8 @@ public class Defesa extends Jogador {
                 + "\nRemate ->" + getRemate()
                 + "\nCapacidade de passe ->" + getCapacidade_de_passe()
                 + "\n Historico de clubes ->" + getHistorico_eq()
-                + "\nCapacidade de defesa ->" + getCap_defesa() + '\n';
+                + "\nCapacidade de defesa ->" + getCap_defesa() + '\n'
+                + "\nCansaco ->" + getCansaco() + "\n";
         return str;
     }
 
@@ -49,13 +51,14 @@ public class Defesa extends Jogador {
     public double calculaCapacidade() {
         return (this.velocidade + this.resistencia + this.destreza + this.capacidade_de_passe) * 0.8
                 + (this.impulsao + this.remate + this.jogo_de_cabeca) * 0.6
-                + this.cap_defesa;
+                + this.cap_defesa - 0.1*getCansaco();
 
     }
 
     public Defesa clone() {
         return new Defesa(this);
     }
+
 
 
 }

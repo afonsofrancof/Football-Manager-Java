@@ -40,14 +40,15 @@ public class Avancado extends Jogador {
                 + "\nRemate ->" + getRemate()
                 + "\nCapacidade de passe ->" + getCapacidade_de_passe()
                 + "\n Historico de clubes ->" + getHistorico_eq()
-                + "\nCapacidade de marcar ->" + getCap_marcar() + '\n';
+                + "\nCapacidade de marcar ->" + getCap_marcar()
+                + "\nCansaco ->" + getCansaco() + '\n';
         return str;
     }
 
     public double calculaCapacidade() {
 
         return (this.getResistencia() + this.getCapacidade_de_passe()) * 0.8
-                + this.getVelocidade() + this.getImpulsao() + this.getRemate() + this.getJogo_de_cabeca() + this.getDestreza() + this.getCap_marcar();
+                + this.getVelocidade() + this.getImpulsao() + this.getRemate() + this.getJogo_de_cabeca() + this.getDestreza() + this.getCap_marcar() - 0.1*getCansaco();
 
     }
 

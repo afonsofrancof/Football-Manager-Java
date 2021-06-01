@@ -39,7 +39,8 @@ public class Lateral extends Jogador {
                 + "\nRemate ->" + getRemate()
                 + "\nCapacidade de passe ->" + getCapacidade_de_passe()
                 + "\n Historico de clubes ->" + getHistorico_eq()
-                + "\nCapacidade de cruzar ->" + getCap_cruzar() + '\n';
+                + "\nCapacidade de cruzar ->" + getCap_cruzar() + '\n'
+                + "\nCansaco ->" + getCansaco() + "\n";
         return str;
     }
 
@@ -47,7 +48,7 @@ public class Lateral extends Jogador {
 
         return (this.getResistencia() + this.getDestreza()) * 0.8
                 + (this.getImpulsao() + this.getRemate() + this.getJogo_de_cabeca()) * 0.6
-                + this.getCap_cruzar() + this.getVelocidade() + this.getCapacidade_de_passe();
+                + this.getCap_cruzar() + this.getVelocidade() + this.getCapacidade_de_passe() - 0.1*getCansaco();
 
     }
 

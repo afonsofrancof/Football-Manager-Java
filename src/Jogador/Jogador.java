@@ -1,9 +1,10 @@
 package Jogador;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 
-public abstract class Jogador{
+public abstract class Jogador implements Comparable<Jogador>{
     
     String nome;
     float velocidade;
@@ -13,6 +14,8 @@ public abstract class Jogador{
     float jogo_de_cabeca;
     float remate;
     float capacidade_de_passe;
+    float cansaco;
+
     ArrayList<String> historico_eq;
 
     public Jogador(){
@@ -25,7 +28,9 @@ public abstract class Jogador{
         this.jogo_de_cabeca=0;
         this.remate=0;
         this.capacidade_de_passe = 0;
+        this.cansaco=0;
         this.historico_eq=new ArrayList<String>();
+
         
 
     }
@@ -41,6 +46,7 @@ public abstract class Jogador{
         this.remate=remate;
         this.capacidade_de_passe=capacidade_de_passe;
         this.setHistorico_eq(historico_eq);
+        this.cansaco=0;
 
     }
 
@@ -55,31 +61,21 @@ public abstract class Jogador{
         this.remate=j.getRemate();
         this.capacidade_de_passe=j.getCapacidade_de_passe();
         this.setHistorico_eq(j.getHistorico_eq());
+        this.cansaco=j.getCansaco();
 
 
 
     }
-    
 
-    public float getVelocidade(){
+    public float getCansaco() { return cansaco; }
 
-        return this.velocidade;
+    public void setCansaco(float cansaco) { this.cansaco = cansaco; }
 
-    }
+    public float getVelocidade(){ return this.velocidade; }
 
-    public float getDestreza(){
+    public float getDestreza(){ return this.destreza; }
 
-        return this.destreza;
-
-    }
-
-    public float getResistencia(){
-
-        return this.resistencia;
-
-    }
-
-
+    public float getResistencia(){ return this.resistencia; }
 
     public void setVelocidade(float velocidade) {
         this.velocidade = velocidade;
@@ -134,6 +130,10 @@ public abstract class Jogador{
         this.capacidade_de_passe = capacidade_de_passe;
     }
 
+    public void setNome(String nome){ this.nome = nome; }
+
+    public String getNome(){ return this.nome; }
+
     public ArrayList<String> getHistorico_eq(){
         return this.historico_eq;
     }
@@ -144,26 +144,60 @@ public abstract class Jogador{
     }
     
     public String toString(){
-        String str = getNome() + ":" 
-        + "\nVelocidade ->"           + getVelocidade() 
-        + "\nDestreza ->"             + getDestreza() 
-        + "\nImpulsao ->"             + getImpulsao() 
-        + "\nJogo de cabeca ->"       + getJogo_de_cabeca() 
-        + "\nRemate ->"               + getRemate() 
+        String str = getNome() + ":"
+        + "\nVelocidade ->"           + getVelocidade()
+        + "\nDestreza ->"             + getDestreza()
+        + "\nImpulsao ->"             + getImpulsao()
+        + "\nJogo de cabeca ->"       + getJogo_de_cabeca()
+        + "\nRemate ->"               + getRemate()
         + "\nCapacidade de passe ->"  + getCapacidade_de_passe()
-        + "\nHistorico de clubes ->" + getHistorico_eq() + '\n';
+        + "\nHistorico de clubes ->" + getHistorico_eq() + '\n'
+        + "\nCansaco ->" + getCansaco() + "\n";
         return str;
     }
 
 
-    public String getNome(){
 
-        return this.nome;
+    public Jogador incrementaCansaco(){
+        this.cansaco++;
+        return this.clone();
     }
-
 
     public abstract double calculaCapacidade();
 
     public abstract Jogador clone();
 
+
+    public int compareTo(Jogador j1){
+        Double a = this.calculaCapacidade();
+        Double b = j1.calculaCapacidade();
+        return a.compareTo(b);
+    }
+
+    public int compareToo(Jogador j1){
+        Float a = this.cansaco;
+        Float b = j1.cansaco;
+        return a.compareTo(b);
+    }
+
+    public static class comparaJogadores implements Comparator<Jogador>{
+
+        public int compare(Jogador j1, Jogador j2){
+            return j1.compareTo(j2);
+
+        }
+
+    }
+
+    public static class comparaCansacos implements Comparator<Jogador>{
+
+        public int compare(Jogador j1,Jogador j2){
+            return j1.compareToo(j2);
+        }
+
+    }
+
+
+
 }
+
