@@ -75,7 +75,7 @@ public class Jogo {
 
         while(timer<90){
             TimeUnit.SECONDS.sleep(1);
-            System.out.print(timer+": ");//added
+            System.out.print(timer+": ");
             int a = calculaFaltas(zona_do_campo,equipa_bola,e1,e2);
             if(a==1) {
                 equipa_bola = equipa_bola==1?0:1;
@@ -120,15 +120,16 @@ public class Jogo {
                         this.foras++;
                         subs = (int) (Math.random() * 2) == 0 ? 1 : 2;
                         subs_prob = (int) (Math.random() * 100) < 10 ? 1 : 0;
-                        if (subs == 1 && this.substituicao1<=3 && subs_prob==1) {
+                        if (subs == 1 && this.substituicao1<3 && subs_prob==1) {
 
                             subs_valida=substituicao(e1);
                             if(subs_valida==1) this.substituicao1++;
                         }
-                        if(subs == 2&&this.substituicao2<=3&&subs_prob==1){
+                        if(subs == 2&&this.substituicao2<3&&subs_prob==1){
 
                             subs_valida=substituicao(e2);
                             if(subs_valida==1) this.substituicao2++;
+
                         }
                     }
 
@@ -176,7 +177,7 @@ public class Jogo {
                 System.out.println("Remates:              " + String.format("%02.0f", this.remates1) + "  VS  " + String.format("%02.0f", this.remates2));
                 System.out.println("Accuracy:           " + String.format("%02.0f", this.accuracy1) + "%" + "  VS  " + String.format("%02.0f", this.accuracy2) + "%");
                 System.out.println("Defesas:             " + String.format("%02d", this.defesas1) + "  VS  " + String.format("%02d", this.defesas2));
-                System.out.println("Substituições:       " + String.format("%d", this.substituicao1) + " VS " + String.format("%d", this.substituicao2));
+                System.out.println("Substituições:         " + String.format("%d", this.substituicao1) + " VS " + String.format("%d", this.substituicao2));
                 System.out.println("Foras: " + this.foras);
                 System.out.println("Faltas: " + this.faltas);
                 TimeUnit.SECONDS.sleep(5);
@@ -232,7 +233,7 @@ public class Jogo {
         e.jogadores_titulares.put(in.getNome(),in);
         e.jogadores_suplentes.remove(in.getNome());
         this.substituidos.add(out.getNome());
-        System.out.print("Sustituicao: ");
+        System.out.print("Substituicao: ");
         System.out.println("Entra " + in.getNome() + ", Sai " + out.getNome() + '\n');
         return 1;
 

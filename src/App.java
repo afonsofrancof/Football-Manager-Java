@@ -63,9 +63,9 @@ public class App {
         Jogador jj10 = new Defesa("Lucas2", 5f, 5f, 5f, 9f, 1f, 10f, 1f, l, 7f);
         Jogador jj11 = new Lateral("JBB2", 8f, 7f, 5f, 3f, 7f, 6f, 9f, l, 2f);
         Jogador jj12 = new Medio("PLEB11", 0f, 0f, 0f, 0f, 0f, 3f, 0f, l, 3f);
-        Jogador jj13 = new Lateral("PLEB22", 0f, 0f, 0f, 0f, 0f, 0f, 0f, l, 0f);
-        Jogador jj14 = new Defesa("PLEB33", 0f, 0f, 0f, 0f, 0f, 0f, 0f, l, 0f);
-        Jogador jj15 = new Lateral("PLEB44", 0f, 0f, 0f, 0f, 0f, 0f, 0f, l, 0f);
+        Jogador jj13 = new Medio("PLEB22", 0f, 0f, 0f, 0f, 0f, 0f, 0f, l, 0f);
+        Jogador jj14 = new Medio("PLEB33", 0f, 0f, 0f, 0f, 0f, 0f, 0f, l, 0f);
+        Jogador jj15 = new Medio("PLEB44", 0f, 0f, 0f, 0f, 0f, 0f, 0f, l, 0f);
 
 
         Equipa a = new Equipa("FC Santana");
