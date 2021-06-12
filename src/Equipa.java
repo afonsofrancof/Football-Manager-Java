@@ -79,7 +79,7 @@ public class Equipa {
     public void adiciona_jogador(Jogador j) {
 
         if ((this.jogadores_suplentes.putIfAbsent(j.getNome(), j)) != null) {
-            System.out.println("jogador já existe\n");//falta criar exception
+            System.out.println("jogador já existe\n");
         }
 
     }
@@ -91,7 +91,7 @@ public class Equipa {
         if (j == null) {
             j = this.jogadores_titulares.remove(nome);
             if (j == null) {
-                System.out.println("jogador não existe\n");//falta criar exception
+                System.out.println("jogador não existe\n");
                 return null;
             }
             return null;
@@ -113,7 +113,7 @@ public class Equipa {
 
             j = this.remove_jogador(nome);
             if (j == null) {
-                System.out.println("jogador não existe\n");//falta criar exception
+                System.out.println("jogador não existe\n");
             } else e.adiciona_jogador(j);
         }
     }
@@ -240,14 +240,14 @@ public class Equipa {
                 result = 1;
             } else if (random > prob1) {
                 result = 2;
-            } else result = 0;//solução provisório para o empate com 1% de chance, quando prob1==random
+            } else result = 0;
         } else if (prob1 < prob2) {
-            //System.out.print("  Entrou 2 "+ stats1+ "  "+ stats2 + " | ");
+
             if (random < prob2) {
                 result = 2;
             } else if (random > prob2) {
                 result = 1;
-            } else result = 0;//solução provisório para o empate com 1% de chance, quando prob2==random
+            } else result = 0;
         } else if (random < 70) result = 0;
         else if (random < 85) result = 1;
         else result = 2;

@@ -91,34 +91,6 @@ public class App {
         LocalDate date = LocalDate.of(2021, 5, 31);
         Jogo j = new Jogo(e,a,date);
         j.simulaJogo();
-        for(Jogador aa:e.jogadores_titulares.values()){
-            System.out.println(aa.toString());
-        }
-
-
-        //System.out.println(e.getJogadores_suplentes().size());
-        //System.out.println(e.getJogadores_suplentes().get(j5.getNome()).toString());
-
-
-        //System.out.println("Old team:");
-
-
-        //e.mudaParaEquipa(a, j2.getNome());
-
-
-        //System.out.println("New team:");
-        //System.out.println(a.getJogadores_suplentes());
-        //System.out.println("Old team:");
-        //System.out.println(e.getJogadores_suplentes());
-//
-        //e.remove_jogador(j1.getNome());
-        //e.remove_jogador(j2.getNome());
-        //e.remove_jogador(j3.getNome());
-        //e.remove_jogador(j4.getNome());
-        //e.remove_jogador(j5.getNome());
-//
-        //
-        //System.out.println(e.getJogadores_suplentes());
 
 
     }

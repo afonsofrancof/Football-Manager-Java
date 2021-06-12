@@ -67,7 +67,7 @@ public class Jogo {
         int subs;
         int zona_do_campo = 1;
         int golo1 = 0, golo2 = 0;
-        equipa_bola = (int) (Math.random() * 2) == 0 ? 1 : 2;//Math.random() * ( max - min ) returns a value in the range [0, max – min] where max is excluded
+        equipa_bola = (int) (Math.random() * 2) == 0 ? 1 : 2;
         float timer = 0;
         this.e1.constroiEquipa(4, 3, 3);
         this.e2.constroiEquipa(4, 3, 3);
@@ -95,7 +95,7 @@ public class Jogo {
                         this.remates2++;
                     } else {
                         System.out.println(e1.getNome() + " defendeu o ataque e passa para o contra-ataque\n");
-                        posse_bola1++;//added
+                        posse_bola1++;
                     }
                     zona_do_campo = 1;
                     equipa_bola = 1;
@@ -106,7 +106,7 @@ public class Jogo {
                     if (calcula_medio_medio(e1, e2) == 1) {
                         if(equipa_bola==1) System.out.println(e1.getNome() + " manteve a bola no meio campo e começa a ganhar terreno\n");else System.out.println(e1.getNome() + " roubou a bola no meio campo e inicia o contra-ataque\n");
                         equipa_bola = 1;
-                        posse_bola1++;//added
+                        posse_bola1++;
                         zona_do_campo = 2;
                     } else {
                         if(equipa_bola==2) System.out.println(e2.getNome() + " manteve a bola no meio campo e começa a ganhar terreno\n");else System.out.println(e2.getNome() + " roubou a bola no meio campo e inicia o contra-ataque\n");
@@ -207,7 +207,7 @@ public class Jogo {
                 System.out.println("Substituições:         " + String.format("%d", this.substituicao1) + " VS " + String.format("%d", this.substituicao2));
                 System.out.println("Foras: " + this.foras);
                 System.out.println("Faltas: " + this.faltas);
-                System.out.println("Golos: " + this.marcadores.toString());//este print pode ficar melhor
+                System.out.println("Golos: " + this.marcadores.toString());
                 this.resultadoFinal = e1.getNome() + "  " + golo1 + " - " + golo2 + "  " + e2.getNome();
             }
 
@@ -374,10 +374,7 @@ public class Jogo {
                 mede2 += j.calculaCapacidade();
             }
         }
-        //double defe1 = e1.jogadores_titulares.values().stream().map(Jogador::clone).filter(e -> e instanceof Defesa).mapToDouble(Jogador::calculaCapacidade).sum();
-        //double mede1 = e1.jogadores_titulares.values().stream().map(Jogador::clone).filter(e -> e instanceof Medio).mapToDouble(Jogador::calculaCapacidade).sum();
-        //double atae2 = e2.jogadores_titulares.values().stream().map(Jogador::clone).filter(e -> e instanceof Avancado || e instanceof Lateral).mapToDouble(Jogador::calculaCapacidade).sum();
-        //double mede2 = e2.jogadores_titulares.values().stream().map(Jogador::clone).filter(e -> e instanceof Medio).mapToDouble(Jogador::calculaCapacidade).sum();
+
         double totalata = 0.70*atae2 + 0.30*mede2;
         double totaldef = 0.70*defe1 + 0.30*mede1;
         return ((int) (Math.random() * (totaldef+totalata+1)))<= (int)totaldef? 1:2 ;
@@ -385,8 +382,6 @@ public class Jogo {
 
     public int calcula_medio_medio(Equipa e1,Equipa e2){
 
-        //double mede1 = e1.jogadores_titulares.values().stream().map(Jogador::clone).filter(e -> e instanceof Medio || e instanceof Lateral).mapToDouble(Jogador::calculaCapacidade).sum();
-        //double mede2 = e2.jogadores_titulares.values().stream().map(Jogador::clone).filter(e -> e instanceof Medio || e instanceof Lateral).mapToDouble(Jogador::calculaCapacidade).sum();
         double mede1=0;
         double mede2=0;
 
